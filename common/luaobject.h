@@ -9,15 +9,18 @@ typedef LUA_INTEGER lua_Integer;
 typedef LUA_NUMBER lua_Number;
 typedef unsigned char lu_byte;
 typedef int (*lua_CFunction)(lua_State* L); // 定义light c function函数指针
+typedef void* (*lua_Alloc)(void* ud, void* ptr, size_t osize, size_t nsize);
 
-typedef union lua_Value {
+typedef union lua_Value 
+{
     void* p; // 存放light userdata
     int b;
     lua_Integer i;
     lua_CFunction f;
 } Value;
 
-typedef struct lua_TValue {
+typedef struct lua_TValue 
+{
     Value value_;  // 值
     int tt_;       // 类型信息
 } TValue;
